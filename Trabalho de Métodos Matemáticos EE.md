@@ -119,6 +119,8 @@ plt.show
 
 #### Formula usada:
 
+![](https://i.imgur.com/CvQ7TlP.png)
+
 #### Código:
 ```.py
 x2 = np.arange(25,26,0.05)
@@ -144,6 +146,8 @@ plt.grid()
 plt.show
 ```
 #### Gráfico
+
+![](https://i.imgur.com/qXCuZc3.png)
 
 #### Conclusão
 
@@ -290,5 +294,12 @@ plt.show()
 ## Questão 4
 
 ### a)
+Considerando que os polos encontrados foram -2 e -3, calculando a inversa de LaPlace pelo teorema dos resíduos, temos:
+
+![](https://i.imgur.com/vgx9EjR.png)
 
 ### b)
+Considerando o polo real -2 e os polos complexos,-2 +3i e -2 -3i, encontrados, calculando a inversa de LaPlace pelo teorema dos resíduos, temos:
+
+![](https://i.imgur.com/cX97Qxz.png)
+![](https://i.imgur.com/qTPCR4q.png)

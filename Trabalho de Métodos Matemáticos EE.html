@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Trabalho de Métodos Matemáticos EE.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="trabalho-de-m%C3%A9todos-matem%C3%A1ticos">Trabalho de Métodos Matemáticos</h1>
+<h2 id="bibliotecas-importadas">Bibliotecas importadas</h2>
+<pre class="hljs"><code><div>
+import math
+from math import exp
+import matplotlib.pyplot as plt
+import numpy as np
+
+</div></code></pre>
+<h2 id="quest%C3%A3o-1">Questão 1</h2>
+<h3 id="a-aproximando-a-fun%C3%A7%C3%A3o-fx-por-seus-polin%C3%B4mios-de-taylor-em-torno-de-25">a) Aproximando a função F(x) por seus polinômios de Taylor em torno de 25</h3>
+<h4 id="formula-para-os-polin%C3%B4mios-de-taylor">Formula para os polinômios de Taylor</h4>
+<p><img src="https://i.imgur.com/8jR5Wbc.png" alt=""></p>
+<h4 id="c%C3%B3digo-usado">Código usado:</h4>
+<pre class="hljs"><code><div>// Iniciando a F(x)
+x = np.arange(0,50,0.1)
+Funcao = np.sqrt(x)
+</div></code></pre>
+<pre class="hljs"><code><div>// Aproximando pelo polinômio de grau 1
+polinomio_grau1 = [5 + (x-25)/10 for x in x]
+
+fig1, imagem1 = plt.subplots(figsize = (10,5))
+imagem1.plot (x,Funcao)
+imagem1.plot (x,polinomio_grau1)
+
+imagem1.set_xlim([0,50])
+imagem1.set_ylim([0,10])
+
+imagem1.legend(['Função','Aproximação_polinomial'],fontsize=10)
+
+plt.grid()
+
+plt.show
+
+</div></code></pre>
+<h4 id="gr%C3%A1fico-da-aproxima%C3%A7%C3%A3o-pelo-polin%C3%B4mio-de-grau-1">Gráfico da aproximação pelo polinômio de grau 1</h4>
+<p><img src="https://i.imgur.com/kGu2k2z.png" alt=""></p>
+<pre class="hljs"><code><div>// Aproximando pelo polinômio de grau 2
+polinomio_grau2 = [5 + (x-25)/10 - ((x-25)**2)/1000 for x in x]
+
+fig2, imagem2 = plt.subplots(figsize = (10,5))
+imagem2.plot (x,Funcao)
+imagem2.plot (x,polinomio_grau2)
+
+imagem2.set_xlim([0,50])
+imagem2.set_ylim([0,10])
+
+imagem2.legend(['Função','Aproximação_polinomial'],fontsize=10)
+
+plt.grid()
+
+plt.show
+</div></code></pre>
+<h4 id="gr%C3%A1fico-da-aproxima%C3%A7%C3%A3o-pelo-polin%C3%B4mio-de-grau-2">Gráfico da aproximação pelo polinômio de grau 2</h4>
+<p><img src="https://i.imgur.com/SoPJEDu.png" alt=""></p>
+<pre class="hljs"><code><div>// Aproximando pelo polinômio de grau 3
+polinomio_grau3 = [5 + (1/10)*(x-25) - (1/1000)*((x-25)**2) + (1/50000)*((x-25)**3) for x in x]
+
+fig3, imagem3 = plt.subplots(figsize = (10,5))
+imagem3.plot (x,Funcao)
+imagem3.plot (x,polinomio_grau3)
+
+imagem3.set_xlim([0,50])
+imagem3.set_ylim([0,10])
+
+imagem3.legend(['Função','Aproximação_polinomial'],fontsize=10)
+
+plt.grid()
+
+plt.show
+</div></code></pre>
+<h4 id="gr%C3%A1fico-da-aproxima%C3%A7%C3%A3o-pelo-polin%C3%B4mio-de-grau-3">Gráfico da aproximação pelo polinômio de grau 3</h4>
+<p><img src="https://i.imgur.com/gjNLgWS.png" alt=""></p>
+<pre class="hljs"><code><div>// Aproximando pelo polinômio de grau 4
+polinomio_grau4 = [5 + (1/10)*(x-25) - (1/1000)*((x-25)**2) + (1/50000)*((x-25)**3) - (1/2000000)*((x-25)**4) for x in x]
+
+fig4, imagem4 = plt.subplots(figsize = (10,5))
+imagem4.plot (x,Funcao)
+imagem4.plot (x,polinomio_grau4)
+
+imagem4.set_xlim([0,50])
+imagem4.set_ylim([0,10])
+
+imagem4.legend(['Função','Aproximação_polinomial'],fontsize=10)
+
+plt.grid()
+
+plt.show
+</div></code></pre>
+<h4 id="gr%C3%A1fico-da-aproxima%C3%A7%C3%A3o-pelo-polin%C3%B4mio-de-grau-4">Gráfico da aproximação pelo polinômio de grau 4</h4>
+<p><img src="https://i.imgur.com/yt9B5tq.png" alt=""></p>
+<h4 id="conclus%C3%A3o">Conclusão:</h4>
+<p>É possivel ver que a medida que o grau dos polinômios de Taylor cresce, o gráfico do polinômio se aproxima cada vez mais do gráfico da função no ponto em questão (x = a = 25)</p>
+<h3 id="bestimando-a-exatid%C3%A3o-da-aproxima%C3%A7%C3%A3o-da-fun%C3%A7%C3%A3o-fx-pelo-seu-polin%C3%B4mio-de-taylor-de-grau-4">b)Estimando a exatidão da aproximação da função F(x) pelo seu polinômio de Taylor de grau 4</h3>
+<h4 id="formula-usada">Formula usada:</h4>
+<p><img src="https://i.imgur.com/CvQ7TlP.png" alt=""></p>
+<h4 id="c%C3%B3digo">Código:</h4>
+<pre class="hljs"><code><div>x2 = np.arange(25,26,0.05)
+
+print (&quot;Valores de x:&quot;)
+print(x2)
+
+Resto_polinomio_grau4 = [((105/3840)*((x2-25)**5))/(x2**(9/2)) for x2 in  x2]
+
+print(&quot;Valores do resto de acordo com x :&quot;)
+print(Resto_polinomio_grau4)
+
+fig5, imagem5 = plt.subplots(figsize = (10,5))
+imagem5.plot (x2,Resto_polinomio_grau4)
+
+imagem5.set_xlim([25,26])
+imagem5.set_ylim([-1,1])
+
+imagem5.legend(['Resto de grau 4 com (25 &lt; x &lt; 26)'],fontsize=10)
+
+plt.grid()
+
+plt.show
+</div></code></pre>
+<h4 id="gr%C3%A1fico">Gráfico</h4>
+<p><img src="https://i.imgur.com/qXCuZc3.png" alt=""></p>
+<h4 id="conclus%C3%A3o">Conclusão</h4>
+<p>Considerando a soma parcial da função F(x) em torno de 25 indo até o polinômio de grau 4, o resto da mesma se torna muito pequeno no intervalo de 25&lt;= x &lt;=26 e pode ser considerado desprezível. Dessa forma, pode se dizer que o polinômio de Taylor de grau 4 da função é uma boa aproximação para a função em pontos próximos de x = 25</p>
+<h2 id="quest%C3%A3o-2">Questão 2</h2>
+<h3 id="a-encontrando-express%C3%B5es-para-aproxima%C3%A7%C3%A3o-linear-e-quadr%C3%A1tica-da-fun%C3%A7%C3%A3o-pt">a) Encontrando expressões para aproximação linear e quadrática da função P(t)</h3>
+<p><img src="https://i.imgur.com/fgSARxl.png" alt=""></p>
+<h3 id="b-gr%C3%A1fico-da-fun%C3%A7%C3%A3o-e-seus-polin%C3%B4mios-de-grau-1-e-2">b) Gráfico da função e seus polinômios de grau 1 e 2</h3>
+<h5 id="c%C3%B3digo">Código:</h5>
+<pre class="hljs"><code><div>t = np.arange(-250,1000,1)
+Funcao2 = ((2.7)/((10)**8)) * (np.exp(0.0043*(t-20)))
+
+aproximacao_Linear = [((2.7)/((10)**8)) + ((2.7)/((10)**8))*0.0043*(i-20) for i in t]
+aproximacao_Quadratica = [((2.7)/((10)**8)) + ((2.7)/((10)**8))*0.0043*(i-20) + (1/2)*((2.7)/((10)**8))*(0.0043**2)*((i-20)**2) for i in t]
+
+fig6, img = plt.subplots(figsize = (10,10))
+img.plot (t,Funcao2)
+img.plot (t,aproximacao_Linear)
+img.plot (t,aproximacao_Quadratica)
+
+
+limiteY = 200*(10**(-8))
+
+img.set_xlim([-200,1010])
+img.set_ylim([-limiteY,limiteY])
+
+img.legend(['Função','aproximacao_linear','aproximacao_quadratica'],fontsize=10)
+
+plt.grid()
+plt.show()
+
+fig7, img2 = plt.subplots(figsize = (10,10))
+img2.plot (t,Funcao2)
+img2.plot (t,aproximacao_Linear)
+img2.plot (t,aproximacao_Quadratica)
+
+
+limiteY = 200*(10**(-8))
+
+img2.set_xlim([-250,250])
+img2.set_ylim([-limiteY,limiteY])
+
+img2.legend(['Função','aproximacao_linear','aproximacao_quadratica'],fontsize=10)
+
+plt.grid()
+plt.show()
+</div></code></pre>
+<h4 id="gr%C3%A1fico">Gráfico</h4>
+<p><img src="https://i.imgur.com/gUhF43A.png" alt=""></p>
+<h4 id="gr%C3%A1fico-aproximando-mais-do-ponto-t-20">Gráfico aproximando mais do ponto t= 20</h4>
+<p><img src="https://i.imgur.com/EMFD0V1.png" alt=""></p>
+<h3 id="c-determinar-a-faixa-de-valores-de-t-nos-quais-a-aproxima%C3%A7%C3%A3o-fique-em-uma-faixa-de-1-do-valor-da-fun%C3%A7%C3%A3o">c) Determinar a faixa de valores de t nos quais a aproximação fique em uma faixa de 1% do valor da função</h3>
+<h4 id="c%C3%B3digo">Código</h4>
+<p>Essa função foi feita para descobrirmos os valores de t no limite das condição desejadas. Com a resposta do código, podemos inferir que t esta dentro do intervalo [-11.4,54.5] considerando uma casa decimal.</p>
+<pre class="hljs"><code><div>a = []
+
+for i in t:
+    Funcao3 = ((2.7)/((10)**8)) * (np.exp(0.0043*(i-20)))
+    aproximacao_Linear2 = ((2.7)/((10)**8)) + ((2.7)/((10)**8))*0.0043*(i-20)
+    if abs(Funcao3 - aproximacao_Linear2) &lt;= 0.01*Funcao3:
+        a.append(i)
+
+
+print(round(min(a),1))
+print(round(max(a),1))
+
+// Saída:
+// -11.4
+// 54.5
+</div></code></pre>
+<h4 id="c%C3%B3digo-para-os-gr%C3%A1ficos">Código para os gráficos</h4>
+<pre class="hljs"><code><div>fig8, img3 = plt.subplots(figsize = (10,5))
+img3.plot (t,Funcao2)
+img3.plot (t,aproximacao_Linear)
+img3.plot (t,1.01*Funcao2)
+img3.plot (t,0.99*Funcao2)
+
+img3.set_xlim([45,65])
+img3.set_ylim([2.7*(10**(-8)),3.5*(10**(-8))])
+
+img3.legend(['Função','aproximacao_linear','101Função','99Função'],fontsize=10)
+
+plt.grid()
+plt.show()
+
+
+
+fig9, img4 = plt.subplots(figsize = (10,5))
+img4.plot (t,Funcao2)
+img4.plot (t,aproximacao_Linear)
+img4.plot (t,1.01*Funcao2)
+img4.plot (t,0.99*Funcao2)
+
+
+limiteY = 2.4*(10**(-8))
+limiteY2 = 2.3*(10**(-8))
+
+img4.set_xlim([-13,-10])
+img4.set_ylim([limiteY2,limiteY])
+
+img4.legend(['Função','aproximacao_linear','101Função','99Função'],fontsize=10)
+
+plt.grid()
+plt.show()
+</div></code></pre>
+<h4 id="imagem-focando-em-pontos-pr%C3%B3ximos-de--114">Imagem focando em pontos próximos de -11.4</h4>
+<p><img src="https://i.imgur.com/qr1geXF.png" alt=""></p>
+<h4 id="imagem-focando-em-pontos-pr%C3%B3ximos-de-545">Imagem focando em pontos próximos de 54.5</h4>
+<p><img src="https://i.imgur.com/6Oj647S.png" alt=""></p>
+<h2 id="quest%C3%A3o-3">Questão 3</h2>
+<h3 id="a">a)</h3>
+<h3 id="b">b)</h3>
+<h3 id="c">c)</h3>
+<h3 id="d">d)</h3>
+<h2 id="quest%C3%A3o-4">Questão 4</h2>
+<h3 id="a">a)</h3>
+<p>Considerando que os polos encontrados foram -2 e -3, calculando a inversa de LaPlace pelo teorema dos resíduos, temos:</p>
+<p><img src="https://i.imgur.com/vgx9EjR.png" alt=""></p>
+<h3 id="b">b)</h3>
+<p>Considerando o polo real -2 e os polos complexos,-2 +3i e -2 -3i, encontrados, calculando a inversa de LaPlace pelo teorema dos resíduos, temos:</p>
+<p><img src="https://i.imgur.com/cX97Qxz.png" alt="">
+<img src="https://i.imgur.com/qTPCR4q.png" alt=""></p>
+
+</body>
+</html>
